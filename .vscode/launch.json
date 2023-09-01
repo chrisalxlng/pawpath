@@ -17,6 +17,12 @@
       "request": "launch",
       "type": "dart",
       "flutterMode": "release"
+    },
+    {
+      "name": "storybook",
+      "request": "launch",
+      "program": "lib/storybook.dart",
+      "type": "dart"
     }
   ]
 }
