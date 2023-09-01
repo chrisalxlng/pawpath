@@ -21,7 +21,7 @@
     {
       "name": "storybook",
       "request": "launch",
-      "program": "lib/storybook.dart",
+      "program": "lib/storybook/storybook.dart",
       "type": "dart"
     }
   ]
