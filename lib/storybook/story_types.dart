@@ -3,8 +3,25 @@ import 'package:pawpath/storybook/wrapper.dart';
 import 'package:storybook_flutter/storybook_flutter.dart';
 
 defaultUiBuilder(Widget child) => Container(
-      color: Colors.white,
-      child: child,
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.center,
+          end: Alignment(-0.2, -0.5),
+          stops: [0.0, 0.5, 0.5, 1],
+          colors: [
+            Colors.orangeAccent,
+            Colors.orangeAccent,
+            Colors.black,
+            Colors.black,
+          ],
+          tileMode: TileMode.repeated,
+        ),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(4),
+        child: Container(
+            color: const Color.fromRGBO(73, 148, 236, 1), child: child),
+      ),
     );
 
 screenStory(Widget widget) => Story(
