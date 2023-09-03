@@ -2,27 +2,26 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:pawpath/app/util.dart';
-import 'package:pawpath/themes.dart';
 
-class IconButton extends StatefulWidget {
-  final IconData iconData;
+class Button extends StatefulWidget {
+  final Widget Function(Color color) builder;
   final VoidCallback onPressed;
   final Color color;
   final double size;
 
-  const IconButton({
+  const Button({
     super.key,
-    required this.iconData,
+    required this.builder,
     required this.onPressed,
     required this.color,
     this.size = 24,
   });
 
   @override
-  State<IconButton> createState() => _IconButtonState();
+  State<Button> createState() => _ButtonState();
 }
 
-class _IconButtonState extends State<IconButton> {
+class _ButtonState extends State<Button> {
   late Color _color;
 
   Timer? _timer;
@@ -36,19 +35,7 @@ class _IconButtonState extends State<IconButton> {
         onTapDown: (_) => _onTapDown(),
         onTapUp: (_) => _onTapUp(),
         onTapCancel: () => _onTapCancel(),
-        child: Padding(
-          padding: const EdgeInsets.all(AppSpacing.p1),
-          child: SizedBox.square(
-            dimension: widget.size,
-            child: FittedBox(
-              fit: BoxFit.cover,
-              child: Icon(
-                widget.iconData,
-                color: _color,
-              ),
-            ),
-          ),
-        ),
+        child: widget.builder(_color),
       ),
     );
   }
