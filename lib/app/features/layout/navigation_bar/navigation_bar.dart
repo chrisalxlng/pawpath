@@ -6,10 +6,12 @@ import 'package:pawpath/app/util.dart';
 
 class NavigationBar extends StatelessWidget {
   final List<NavigationBarDestination> destinations;
-  final NavigationBarKey activeItemKey;
+  final NavigationBarKey activeDestinationKey;
 
   const NavigationBar(
-      {super.key, required this.activeItemKey, required this.destinations});
+      {super.key,
+      required this.activeDestinationKey,
+      required this.destinations});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,7 @@ class NavigationBar extends StatelessWidget {
         .map((item) => NavigationBarDestination(
               label: item.label,
               icon: item.icon,
-              isActive: item.key == ValueKey(activeItemKey),
+              isActive: item.key == ValueKey(activeDestinationKey),
               callback: item.callback,
             ))
         .toList();

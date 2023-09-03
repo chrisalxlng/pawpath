@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart' hide NavigationBar;
 import 'package:pawpath/app/features/layout/navigation_bar/navigation_bar.dart';
 import 'package:pawpath/app/features/layout/navigation_bar/navigation_bar.type.dart';
 import 'package:pawpath/app/features/layout/navigation_bar/navigation_bar_destination.dart';
-import 'package:pawpath/storybook/story_types.dart';
-import 'package:storybook_flutter/storybook_flutter.dart';
 
 final List<NavigationBarDestination> destinations = [
   NavigationBarDestination(
@@ -28,15 +27,25 @@ final List<NavigationBarDestination> destinations = [
       callback: () => debugPrint("Settings destination pressed")),
 ];
 
-final Story navigationBarStory = featureStoryWithKnobs(
-  "Layout",
-  "NavigationBar",
-  (context) => NavigationBar(
-      activeDestinationKey: context.knobs.options(
-          label: "Active destination",
-          initial: NavigationBarKey.today,
-          options: NavigationBarKey.values
-              .map((key) => Option(label: key.toString(), value: key))
-              .toList()),
-      destinations: destinations),
-);
+class AppLayout extends StatelessWidget {
+  final PreferredSizeWidget appBar;
+  final NavigationBarKey activeDestinationKey;
+  final Widget child;
+
+  const AppLayout(
+      {super.key,
+      required this.appBar,
+      required this.activeDestinationKey,
+      required this.child});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: appBar,
+      bottomNavigationBar: NavigationBar(
+          activeDestinationKey: activeDestinationKey,
+          destinations: destinations),
+      body: child,
+    );
+  }
+}
