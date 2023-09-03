@@ -24,6 +24,20 @@ defaultUiBuilder(Widget child) => Container(
       ),
     );
 
+featureStory(String feature, Widget widget) => Story(
+      name: "Features/$feature/${widget.toString()}",
+      builder: (context) => defaultUiBuilder(widget),
+      wrapperBuilder: (_, child) => uiWrapper(child),
+    );
+
+featureStoryWithKnobs(String feature, String name,
+        Widget Function(BuildContext context) builder) =>
+    Story(
+      name: "Features/$feature/$name",
+      builder: (context) => defaultUiBuilder(builder(context)),
+      wrapperBuilder: (_, child) => uiWrapper(child),
+    );
+
 screenStory(Widget widget) => Story(
       name: "Screens/${widget.toString()}",
       builder: (context) => widget,

@@ -8,3 +8,6 @@ Color darkenColor(Color color, [double amount = .1]) {
 
   return hslDark.toColor();
 }
+
+bool isLightTheme(BuildContext context) =>
+    Theme.of(context).brightness == Brightness.light;

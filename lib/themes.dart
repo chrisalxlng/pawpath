@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pawpath/app/util.dart';
 
 class AppColors {
   static const Color primary_100 = Color.fromRGBO(209, 150, 110, 1);
@@ -21,6 +22,14 @@ class AppColors {
   static const Color dark_400 = Color.fromRGBO(87, 87, 87, 1);
   static const Color dark_500 = Color.fromRGBO(113, 113, 113, 1);
   static const Color dark_600 = Color.fromRGBO(139, 139, 139, 1);
+
+  static Color backgroundPrimary(BuildContext context) =>
+      isLightTheme(context) ? light_200 : dark_100;
+  static Color backgroundSecondary(BuildContext context) =>
+      isLightTheme(context) ? light_100 : dark_200;
+
+  static Color textPrimary(BuildContext context) =>
+      isLightTheme(context) ? dark_200 : light_100;
 }
 
 class AppSpacing {
