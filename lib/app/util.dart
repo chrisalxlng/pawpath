@@ -9,8 +9,5 @@ Color darkenColor(Color color, [double amount = .1]) {
   return hslDark.toColor();
 }
 
-double getBottomSafeArea(BuildContext context) =>
-    MediaQuery.of(context).padding.bottom;
-
 bool isLightTheme(BuildContext context) =>
     Theme.of(context).brightness == Brightness.light;

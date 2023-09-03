@@ -1,11 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart' hide NavigationBar;
+import "package:flutter/services.dart";
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pawpath/app/features/layout/navigation_bar/navigation_bar.dart';
 import 'package:pawpath/app/features/layout/navigation_bar/navigation_bar.type.dart';
 import 'package:pawpath/app/features/layout/navigation_bar/navigation_bar_destination.dart';
 import 'package:pawpath/app/themes.dart';
+import "package:pawpath/app/util.dart";
 
 List<NavigationBarDestination> destinations(BuildContext context) => [
       NavigationBarDestination(
@@ -45,14 +47,18 @@ class AppLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: AppColors.backgroundSecondary(context),
-      child: SafeArea(
-          child: Scaffold(
-        appBar: appBar,
-        bottomNavigationBar: NavigationBar(
-            activeDestinationKey: activeDestinationKey,
-            destinations: destinations(context)),
-        body: child,
-      )),
+      child: AnnotatedRegion<SystemUiOverlayStyle>(
+          value: isLightTheme(context)
+              ? SystemUiOverlayStyle.dark
+              : SystemUiOverlayStyle.light,
+          child: SafeArea(
+              child: Scaffold(
+            appBar: appBar,
+            bottomNavigationBar: NavigationBar(
+                activeDestinationKey: activeDestinationKey,
+                destinations: destinations(context)),
+            body: child,
+          ))),
     );
   }
 }

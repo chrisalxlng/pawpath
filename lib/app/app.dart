@@ -19,6 +19,8 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       title: 'pawpath',
+      theme: ThemeData(brightness: Brightness.light),
+      darkTheme: ThemeData(brightness: Brightness.dark),
       localizationsDelegates: localizationDelegates,
       supportedLocales: locales,
       routerConfig: router,
