@@ -29,7 +29,9 @@ class AppColors {
       isLightTheme(context) ? light_100 : dark_200;
 
   static Color textPrimary(BuildContext context) =>
-      isLightTheme(context) ? dark_200 : light_100;
+      isLightTheme(context) ? dark_100 : light_100;
+  static Color textSecondary(BuildContext context) =>
+      isLightTheme(context) ? dark_500 : light_500;
 }
 
 class AppSpacing {
