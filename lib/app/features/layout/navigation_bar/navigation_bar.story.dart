@@ -7,22 +7,22 @@ import 'package:storybook_flutter/storybook_flutter.dart';
 
 final List<NavigationBarDestination> destinations = [
   NavigationBarDestination(
-      key: const ValueKey(NavigationBarKey.today),
+      key: const ValueKey(NavigationDestinationKey.today),
       label: "Today",
       icon: CupertinoIcons.today_fill,
       callback: () => debugPrint("Today destination pressed")),
   NavigationBarDestination(
-      key: const ValueKey(NavigationBarKey.history),
+      key: const ValueKey(NavigationDestinationKey.history),
       label: "History",
       icon: CupertinoIcons.book_fill,
       callback: () => debugPrint("History destination pressed")),
   NavigationBarDestination(
-      key: const ValueKey(NavigationBarKey.stats),
+      key: const ValueKey(NavigationDestinationKey.stats),
       label: "Stats",
       icon: CupertinoIcons.chart_pie_fill,
       callback: () => debugPrint("Stats destination pressed")),
   NavigationBarDestination(
-      key: const ValueKey(NavigationBarKey.settings),
+      key: const ValueKey(NavigationDestinationKey.settings),
       label: "Settings",
       icon: CupertinoIcons.gear_alt_fill,
       callback: () => debugPrint("Settings destination pressed")),
@@ -34,8 +34,8 @@ final Story navigationBarStory = featureStoryWithKnobs(
   (context) => NavigationBar(
       activeDestinationKey: context.knobs.options(
           label: "Active destination",
-          initial: NavigationBarKey.today,
-          options: NavigationBarKey.values
+          initial: NavigationDestinationKey.today,
+          options: NavigationDestinationKey.values
               .map((key) => Option(label: key.toString(), value: key))
               .toList()),
       destinations: destinations),

@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:pawpath/app/features/layout/navigation_bar/navigation_bar.type.dart';
 import 'package:pawpath/app/features/layout/navigation_bar/navigation_bar_destination.dart';
 import 'package:pawpath/app/themes.dart';
-import 'package:pawpath/app/util.dart';
 
 class NavigationBar extends StatelessWidget {
   final List<NavigationBarDestination> destinations;
-  final NavigationBarKey activeDestinationKey;
+  final NavigationDestinationKey activeDestinationKey;
 
   const NavigationBar(
       {super.key,
@@ -31,18 +30,13 @@ class NavigationBar extends StatelessWidget {
             decoration: BoxDecoration(
               color: AppColors.backgroundSecondary(context),
               boxShadow: const [
-                BoxShadow(
-                  color: Color.fromRGBO(117, 118, 122, 0.2),
-                  offset: Offset(0, -4),
-                  blurRadius: 32,
-                ),
+                AppShadows.top,
               ],
             ),
-            padding: EdgeInsets.fromLTRB(AppSpacing.p3, AppSpacing.p2,
-                AppSpacing.p3, AppSpacing.p3 + getBottomSafeArea(context)),
+            padding: const EdgeInsets.symmetric(
+                horizontal: AppSpacing.p3, vertical: AppSpacing.p2),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: destinations,
             ))
       ],

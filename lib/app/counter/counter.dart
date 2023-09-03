@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:pawpath/app/themes.dart';
 
 class Counter extends StatefulWidget {
-  const Counter({super.key});
+  final String title;
+
+  const Counter({super.key, required this.title});
 
   @override
   State<Counter> createState() => _CounterState();
@@ -13,16 +15,14 @@ class _CounterState extends State<Counter> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(S.of(context).helloWorld),
-      ),
-      body: Center(
+    return Container(
+      color: AppColors.backgroundPrimary(context),
+      child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+            Text(
+              "${widget.title} - You have pushed the button this many times:",
             ),
             Text(
               '$_counter',
@@ -30,11 +30,6 @@ class _CounterState extends State<Counter> {
             ),
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
       ),
     );
   }

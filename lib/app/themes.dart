@@ -23,6 +23,8 @@ class AppColors {
   static const Color dark_500 = Color.fromRGBO(113, 113, 113, 1);
   static const Color dark_600 = Color.fromRGBO(139, 139, 139, 1);
 
+  static const Color shadowColor = Color.fromRGBO(117, 118, 122, 0.1);
+
   static Color backgroundPrimary(BuildContext context) =>
       isLightTheme(context) ? light_200 : dark_100;
   static Color backgroundSecondary(BuildContext context) =>
@@ -32,6 +34,19 @@ class AppColors {
       isLightTheme(context) ? dark_100 : light_100;
   static Color textSecondary(BuildContext context) =>
       isLightTheme(context) ? dark_500 : light_500;
+}
+
+class AppShadows {
+  static const BoxShadow top = BoxShadow(
+    color: AppColors.shadowColor,
+    offset: Offset(0, -4),
+    blurRadius: 6,
+  );
+  static const BoxShadow bottom = BoxShadow(
+    color: AppColors.shadowColor,
+    offset: Offset(0, 4),
+    blurRadius: 6,
+  );
 }
 
 class AppSpacing {

@@ -1,4 +1,7 @@
 {
   "@@locale": "de",
-  "helloWorld": "Hallo Welt"
+  "navigationDestinationToday": "Heute",
+  "navigationDestinationHistory": "Verlauf",
+  "navigationDestinationStats": "Statistik",
+  "navigationDestinationSettings": "Einstellungen"
 }

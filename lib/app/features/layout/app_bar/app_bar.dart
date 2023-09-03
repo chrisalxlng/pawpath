@@ -15,7 +15,11 @@ class AppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: AppColors.backgroundSecondary(context),
+      decoration: BoxDecoration(
+          color: AppColors.backgroundSecondary(context),
+          boxShadow: const [
+            AppShadows.bottom,
+          ]),
       padding: const EdgeInsets.all(AppSpacing.p4),
       height: appBarHeight,
       child: Row(

@@ -1,35 +1,38 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart' hide NavigationBar;
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:go_router/go_router.dart';
 import 'package:pawpath/app/features/layout/navigation_bar/navigation_bar.dart';
 import 'package:pawpath/app/features/layout/navigation_bar/navigation_bar.type.dart';
 import 'package:pawpath/app/features/layout/navigation_bar/navigation_bar_destination.dart';
+import 'package:pawpath/app/themes.dart';
 
-final List<NavigationBarDestination> destinations = [
-  NavigationBarDestination(
-      key: const ValueKey(NavigationBarKey.today),
-      label: "Today",
-      icon: CupertinoIcons.today_fill,
-      callback: () => debugPrint("Today destination pressed")),
-  NavigationBarDestination(
-      key: const ValueKey(NavigationBarKey.history),
-      label: "History",
-      icon: CupertinoIcons.book_fill,
-      callback: () => debugPrint("History destination pressed")),
-  NavigationBarDestination(
-      key: const ValueKey(NavigationBarKey.stats),
-      label: "Stats",
-      icon: CupertinoIcons.chart_pie_fill,
-      callback: () => debugPrint("Stats destination pressed")),
-  NavigationBarDestination(
-      key: const ValueKey(NavigationBarKey.settings),
-      label: "Settings",
-      icon: CupertinoIcons.gear_alt_fill,
-      callback: () => debugPrint("Settings destination pressed")),
-];
+List<NavigationBarDestination> destinations(BuildContext context) => [
+      NavigationBarDestination(
+          key: const ValueKey(NavigationDestinationKey.today),
+          label: S.of(context).navigationDestinationToday,
+          icon: CupertinoIcons.today_fill,
+          callback: () => context.go("/today")),
+      NavigationBarDestination(
+          key: const ValueKey(NavigationDestinationKey.history),
+          label: S.of(context).navigationDestinationHistory,
+          icon: CupertinoIcons.book_fill,
+          callback: () => context.go("/history")),
+      NavigationBarDestination(
+          key: const ValueKey(NavigationDestinationKey.stats),
+          label: S.of(context).navigationDestinationStats,
+          icon: CupertinoIcons.chart_pie_fill,
+          callback: () => context.go("/stats")),
+      NavigationBarDestination(
+          key: const ValueKey(NavigationDestinationKey.settings),
+          label: S.of(context).navigationDestinationSettings,
+          icon: CupertinoIcons.gear_alt_fill,
+          callback: () => context.go("/settings")),
+    ];
 
 class AppLayout extends StatelessWidget {
   final PreferredSizeWidget appBar;
-  final NavigationBarKey activeDestinationKey;
+  final NavigationDestinationKey activeDestinationKey;
   final Widget child;
 
   const AppLayout(
@@ -40,12 +43,16 @@ class AppLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: appBar,
-      bottomNavigationBar: NavigationBar(
-          activeDestinationKey: activeDestinationKey,
-          destinations: destinations),
-      body: child,
+    return Container(
+      color: AppColors.backgroundSecondary(context),
+      child: SafeArea(
+          child: Scaffold(
+        appBar: appBar,
+        bottomNavigationBar: NavigationBar(
+            activeDestinationKey: activeDestinationKey,
+            destinations: destinations(context)),
+        body: child,
+      )),
     );
   }
 }

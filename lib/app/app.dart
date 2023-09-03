@@ -1,25 +1,27 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide AppBar;
+import 'package:go_router/go_router.dart';
 import 'package:pawpath/app/counter/counter.dart';
+import 'package:pawpath/app/features/layout/app_bar/app_bar.dart';
+import 'package:pawpath/app/features/layout/app_layout/app_layout.dart';
+import 'package:pawpath/app/features/layout/navigation_bar/navigation_bar.type.dart';
 import 'package:pawpath/l10n/l10n.dart';
 
+part 'router.dart';
+
 void main() {
-  runApp(const MyApp());
+  runApp(const App());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class App extends StatelessWidget {
+  const App({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
+    return MaterialApp.router(
+      title: 'pawpath',
       localizationsDelegates: localizationDelegates,
       supportedLocales: locales,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const Counter(),
+      routerConfig: router,
     );
   }
 }

@@ -9,7 +9,7 @@ final Story appLayoutStory = featureStory(
   "Layout",
   AppLayout(
       appBar: const AppBar(title: "Title"),
-      activeDestinationKey: NavigationBarKey.today,
+      activeDestinationKey: NavigationDestinationKey.today,
       child: Container(
         color: Colors.red,
       )),

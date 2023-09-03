@@ -1,1 +1,1 @@
-enum NavigationBarKey { today, history, stats, settings }
+enum NavigationDestinationKey { today, history, stats, settings }
