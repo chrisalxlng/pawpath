@@ -30,11 +30,15 @@ screenStory(Widget widget) => Story(
       wrapperBuilder: (_, child) => screenWrapper(child),
     );
 
-uiStory(Widget widget, [Widget Function(BuildContext context)? builder]) =>
-    Story(
+uiStory(Widget widget) => Story(
       name: "UI/${widget.toString()}",
-      builder: (context) => builder != null
-          ? defaultUiBuilder(builder(context))
-          : defaultUiBuilder(widget),
+      builder: (context) => defaultUiBuilder(widget),
+      wrapperBuilder: (_, child) => uiWrapper(child),
+    );
+
+uiStoryWithKnobs(String name, Widget Function(BuildContext context) builder) =>
+    Story(
+      name: "UI/$name",
+      builder: (context) => defaultUiBuilder(builder(context)),
       wrapperBuilder: (_, child) => uiWrapper(child),
     );
