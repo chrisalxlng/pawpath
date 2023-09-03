@@ -1,7 +1,7 @@
-import 'dart:async';
+import "dart:async";
 
-import 'package:flutter/material.dart';
-import 'package:pawpath/app/util.dart';
+import "package:flutter/material.dart";
+import "package:pawpath/app/util.dart";
 
 class Button extends StatefulWidget {
   final Widget Function(Color color) builder;

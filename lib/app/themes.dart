@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:pawpath/app/util.dart';
+import "package:flutter/material.dart";
+import "package:pawpath/app/util.dart";
 
 class AppColors {
   static const Color primary_100 = Color.fromRGBO(209, 150, 110, 1);

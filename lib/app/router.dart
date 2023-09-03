@@ -1,17 +1,17 @@
-part of 'app.dart';
+part of "app.dart";
 
 String? fullPath;
 
 final router = GoRouter(
     navigatorKey: _rootNavigatorKey,
-    initialLocation: '/today',
+    initialLocation: "/today",
     routes: [
       ShellRoute(
           navigatorKey: _stageNavigatorKey,
           pageBuilder: _defaultLayout,
           routes: [
             GoRoute(
-              path: '/today',
+              path: "/today",
               pageBuilder: (context, state) {
                 fullPath = state.fullPath;
                 return const NoTransitionPage(
@@ -21,7 +21,7 @@ final router = GoRouter(
               },
             ),
             GoRoute(
-              path: '/history',
+              path: "/history",
               pageBuilder: (context, state) {
                 fullPath = state.fullPath;
                 return const NoTransitionPage(
@@ -31,7 +31,7 @@ final router = GoRouter(
               },
             ),
             GoRoute(
-              path: '/stats',
+              path: "/stats",
               pageBuilder: (context, state) {
                 fullPath = state.fullPath;
                 return const NoTransitionPage(
@@ -41,7 +41,7 @@ final router = GoRouter(
               },
             ),
             GoRoute(
-              path: '/settings',
+              path: "/settings",
               pageBuilder: (context, state) {
                 fullPath = state.fullPath;
                 return const NoTransitionPage(
@@ -56,13 +56,13 @@ final router = GoRouter(
 ShellRoutePageBuilder _defaultLayout = (context, state, child) {
   late final NavigationDestinationKey activeDestinationKey;
 
-  if (fullPath?.endsWith('/today') ?? false) {
+  if (fullPath?.endsWith("/today") ?? false) {
     activeDestinationKey = NavigationDestinationKey.today;
-  } else if (fullPath?.endsWith('/history') ?? false) {
+  } else if (fullPath?.endsWith("/history") ?? false) {
     activeDestinationKey = NavigationDestinationKey.history;
-  } else if (fullPath?.endsWith('/stats') ?? false) {
+  } else if (fullPath?.endsWith("/stats") ?? false) {
     activeDestinationKey = NavigationDestinationKey.stats;
-  } else if (fullPath?.endsWith('/settings') ?? false) {
+  } else if (fullPath?.endsWith("/settings") ?? false) {
     activeDestinationKey = NavigationDestinationKey.settings;
   }
 
@@ -76,6 +76,6 @@ ShellRoutePageBuilder _defaultLayout = (context, state, child) {
 };
 
 final GlobalKey<NavigatorState> _rootNavigatorKey =
-    GlobalKey<NavigatorState>(debugLabel: 'root');
+    GlobalKey<NavigatorState>(debugLabel: "root");
 final GlobalKey<NavigatorState> _stageNavigatorKey =
-    GlobalKey<NavigatorState>(debugLabel: 'stage');
+    GlobalKey<NavigatorState>(debugLabel: "stage");

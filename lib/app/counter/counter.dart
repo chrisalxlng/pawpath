@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:pawpath/app/themes.dart';
+import "package:flutter/material.dart";
+import "package:pawpath/app/themes.dart";
 
 class Counter extends StatefulWidget {
   final String title;
@@ -25,7 +25,7 @@ class _CounterState extends State<Counter> {
               "${widget.title} - You have pushed the button this many times:",
             ),
             Text(
-              '$_counter',
+              "$_counter",
               style: Theme.of(context).textTheme.headlineMedium,
             ),
           ],
