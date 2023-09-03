@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:pawpath/themes.dart';
+import 'package:pawpath/app/themes.dart';
 
 class NavigationBarDestination extends StatelessWidget {
   final String label;
