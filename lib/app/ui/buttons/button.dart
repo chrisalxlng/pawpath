@@ -1,6 +1,7 @@
 import "dart:async";
 
 import "package:flutter/material.dart";
+import "package:pawpath/app/ui/touchable/touchable.dart";
 import "package:pawpath/app/util.dart";
 
 class Button extends StatefulWidget {
@@ -28,8 +29,7 @@ class _ButtonState extends State<Button> {
 
   @override
   Widget build(BuildContext context) {
-    return MouseRegion(
-      cursor: SystemMouseCursors.click,
+    return Touchable(
       child: GestureDetector(
         behavior: HitTestBehavior.opaque,
         onTapDown: (_) => _onTapDown(),

@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:gap/gap.dart";
 import "package:pawpath/app/themes.dart";
+import "package:pawpath/app/ui/touchable/touchable.dart";
 
 class NavigationBarDestination extends StatelessWidget {
   final String label;
@@ -23,8 +24,7 @@ class NavigationBarDestination extends StatelessWidget {
     return Expanded(
         child: Padding(
       padding: const EdgeInsets.symmetric(horizontal: AppSpacing.p0_5),
-      child: MouseRegion(
-          cursor: SystemMouseCursors.click,
+      child: Touchable(
           child: GestureDetector(
               onTap: () => callback?.call(),
               behavior: HitTestBehavior.opaque,
