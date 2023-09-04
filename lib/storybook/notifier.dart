@@ -11,6 +11,8 @@ ValueNotifier<int> localeIndexNotifier = ValueNotifier<int>(0);
 ValueNotifier<StoryType> storyTypeNotifier =
     ValueNotifier<StoryType>(StoryType.ui);
 
+ValueNotifier<bool> uiBorderNotifier = ValueNotifier<bool>(true);
+
 changeBrightness() {
   brightnessNotifier.value = isLightTheme(brightnessNotifier.value)
       ? Brightness.dark
@@ -29,6 +31,10 @@ changeStoryType(StoryType storyType) {
   Future.delayed(Duration.zero, () async {
     storyTypeNotifier.value = storyType;
   });
+}
+
+changeUiBorder() {
+  uiBorderNotifier.value = !uiBorderNotifier.value;
 }
 
 enum StoryType { ui, screen }
