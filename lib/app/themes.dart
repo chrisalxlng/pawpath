@@ -1,6 +1,10 @@
 import "package:flutter/material.dart";
 import "package:pawpath/app/util.dart";
 
+class AppBorderRadius {
+  static const double md = 10;
+}
+
 class AppColors {
   static const Color primary_100 = Color.fromRGBO(209, 150, 110, 1);
   static const Color primary_200 = Color.fromRGBO(215, 161, 125, 1);
