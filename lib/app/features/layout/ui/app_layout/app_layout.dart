@@ -3,9 +3,9 @@ import "package:flutter/material.dart" hide NavigationBar;
 import "package:flutter/services.dart";
 import "package:flutter_gen/gen_l10n/app_localizations.dart";
 import "package:go_router/go_router.dart";
-import "package:pawpath/app/features/layout/navigation_bar/navigation_bar.dart";
-import "package:pawpath/app/features/layout/navigation_bar/navigation_bar.type.dart";
-import "package:pawpath/app/features/layout/navigation_bar/navigation_bar_destination.dart";
+import "package:pawpath/app/features/layout/ui/navigation_bar/navigation_bar.dart";
+import "package:pawpath/app/features/layout/ui/navigation_bar/navigation_bar.type.dart";
+import "package:pawpath/app/features/layout/ui/navigation_bar/navigation_bar_destination.dart";
 import "package:pawpath/app/themes.dart";
 import "package:pawpath/app/util.dart";
 
