@@ -24,6 +24,7 @@ class SelectGroup extends StatelessWidget {
               Select(
                 key: option.key,
                 label: option.label,
+                color: AppColors.backgroundSecondary(context),
                 isSelected: selectedOptionKeys.contains(option.key),
                 onChanged: (isSelected) {
                   if (isSelected) {
