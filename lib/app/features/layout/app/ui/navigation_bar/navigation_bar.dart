@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
-import "package:pawpath/app/features/layout/ui/navigation_bar/navigation_bar.type.dart";
-import "package:pawpath/app/features/layout/ui/navigation_bar/navigation_bar_destination.dart";
+import "package:pawpath/app/features/layout/app/ui/navigation_bar/navigation_bar.type.dart";
+import "package:pawpath/app/features/layout/app/ui/navigation_bar/navigation_bar_destination.dart";
 import "package:pawpath/app/themes.dart";
 
 class NavigationBar extends StatelessWidget {

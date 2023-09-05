@@ -1,7 +1,7 @@
 import "package:flutter/cupertino.dart";
-import "package:pawpath/app/features/layout/ui/navigation_bar/navigation_bar.dart";
-import "package:pawpath/app/features/layout/ui/navigation_bar/navigation_bar.type.dart";
-import "package:pawpath/app/features/layout/ui/navigation_bar/navigation_bar_destination.dart";
+import "package:pawpath/app/features/layout/app/ui/navigation_bar/navigation_bar.dart";
+import "package:pawpath/app/features/layout/app/ui/navigation_bar/navigation_bar.type.dart";
+import "package:pawpath/app/features/layout/app/ui/navigation_bar/navigation_bar_destination.dart";
 import "package:pawpath/storybook/story_types.dart";
 import "package:storybook_flutter/storybook_flutter.dart";
 

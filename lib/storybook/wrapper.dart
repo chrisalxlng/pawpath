@@ -1,7 +1,7 @@
 import "package:flutter/material.dart" hide AppBar;
-import "package:pawpath/app/features/layout/ui/app_bar/app_bar.dart";
-import "package:pawpath/app/features/layout/ui/app_layout/app_layout.dart";
-import "package:pawpath/app/features/layout/ui/navigation_bar/navigation_bar.type.dart";
+import "package:pawpath/app/features/layout/app/ui/app_bar/app_bar.dart";
+import "package:pawpath/app/features/layout/app/ui/app_layout/app_layout.dart";
+import "package:pawpath/app/features/layout/app/ui/navigation_bar/navigation_bar.type.dart";
 import "package:pawpath/l10n/l10n.dart";
 import "package:pawpath/storybook/notifier.dart";
 import "package:pawpath/storybook/plugins/device_plugin.dart";
