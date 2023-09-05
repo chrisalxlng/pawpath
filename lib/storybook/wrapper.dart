@@ -1,7 +1,7 @@
-import "package:flutter/material.dart" hide AppBar;
-import "package:pawpath/app/features/layout/app/ui/app_bar/app_bar.dart";
+import "package:flutter/material.dart";
 import "package:pawpath/app/features/layout/app/ui/app_layout/app_layout.dart";
 import "package:pawpath/app/features/layout/app/ui/navigation_bar/navigation_bar.type.dart";
+import "package:pawpath/app/features/layout/shared/ui/header_bar/header_bar.dart";
 import "package:pawpath/l10n/l10n.dart";
 import "package:pawpath/storybook/notifier.dart";
 import "package:pawpath/storybook/plugins/device_plugin.dart";
@@ -31,7 +31,7 @@ screenWrapper(Widget? child) {
   return materialApp(Container(
     color: Colors.white,
     child: deviceFrame(AppLayout(
-        appBar: const AppBar(title: "Title"),
+        appBar: const HeaderBar(title: "Title"),
         activeDestinationKey: NavigationDestinationKey.today,
         child: child!)),
   ));

@@ -95,8 +95,11 @@ ShellRoutePageBuilder _defaultLayout = (context, state, child) {
   return MaterialPage(
       child: AppLayout(
           activeDestinationKey: activeDestinationKey,
-          appBar: AppBar(
+          appBar: HeaderBar(
             title: title,
+            action: HeaderBarAction(
+                iconData: Icons.swap_horizontal_circle,
+                onPressed: () => context.go("$fullPath/dog-selection")),
           ),
           child: child));
 };
