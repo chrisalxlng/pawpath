@@ -1,81 +1,105 @@
 part of "app.dart";
 
+final dogSelectionRoute = GoRoute(
+    path: "dog-selection",
+    parentNavigatorKey: _rootNavigatorKey,
+    pageBuilder: (context, state) {
+      fullPath = state.fullPath;
+      return const ModalBottomSheetPage(child: DogOverview());
+    },
+    routes: [
+      GoRoute(
+        path: "add",
+        parentNavigatorKey: _rootNavigatorKey,
+        pageBuilder: (context, state) {
+          fullPath = state.fullPath;
+          return const ModalBottomSheetPage(level: 2, child: DogCreation());
+        },
+      )
+    ]);
+
 String? fullPath;
 
 final router = GoRouter(
     navigatorKey: _rootNavigatorKey,
     initialLocation: "/today",
     routes: [
-      ShellRoute(
-          navigatorKey: _stageNavigatorKey,
-          pageBuilder: _defaultLayout,
-          routes: [
-            GoRoute(
-              path: "/today",
-              pageBuilder: (context, state) {
-                fullPath = state.fullPath;
-                return const NoTransitionPage(
-                    child: Counter(
+      ShellRoute(pageBuilder: _defaultLayout, routes: [
+        GoRoute(
+            path: "/today",
+            pageBuilder: (context, state) {
+              fullPath = state.fullPath;
+              return NoTransitionPage(
+                  child: GestureDetector(
+                onTap: () => context.go("/today/test"),
+                child: const Counter(
                   title: "Today",
-                ));
-              },
-            ),
-            GoRoute(
-              path: "/history",
-              pageBuilder: (context, state) {
-                fullPath = state.fullPath;
-                return const NoTransitionPage(
-                    child: Counter(
-                  title: "History",
-                ));
-              },
-            ),
-            GoRoute(
-              path: "/stats",
-              pageBuilder: (context, state) {
-                fullPath = state.fullPath;
-                return const NoTransitionPage(
-                    child: Counter(
-                  title: "Stats",
-                ));
-              },
-            ),
-            GoRoute(
-              path: "/settings",
-              pageBuilder: (context, state) {
-                fullPath = state.fullPath;
-                return const NoTransitionPage(
-                    child: Counter(
-                  title: "Settings",
-                ));
-              },
-            ),
-          ]),
+                ),
+              ));
+            },
+            routes: [dogSelectionRoute]),
+        GoRoute(
+            path: "/history",
+            pageBuilder: (context, state) {
+              fullPath = state.fullPath;
+              return const NoTransitionPage(
+                  child: Counter(
+                title: "History",
+              ));
+            },
+            routes: [dogSelectionRoute]),
+        GoRoute(
+            path: "/stats",
+            pageBuilder: (context, state) {
+              fullPath = state.fullPath;
+              return const NoTransitionPage(
+                  child: Counter(
+                title: "Stats",
+              ));
+            },
+            routes: [dogSelectionRoute]),
+        GoRoute(
+            path: "/settings",
+            pageBuilder: (context, state) {
+              fullPath = state.fullPath;
+              return const NoTransitionPage(
+                  child: Counter(
+                title: "Settings",
+              ));
+            },
+            routes: [dogSelectionRoute]),
+      ]),
     ]);
 
 ShellRoutePageBuilder _defaultLayout = (context, state, child) {
   late final NavigationDestinationKey activeDestinationKey;
+  late final String title;
 
   if (fullPath?.endsWith("/today") ?? false) {
+    title = S.of(context).navigationDestinationToday;
     activeDestinationKey = NavigationDestinationKey.today;
   } else if (fullPath?.endsWith("/history") ?? false) {
+    title = S.of(context).navigationDestinationHistory;
     activeDestinationKey = NavigationDestinationKey.history;
   } else if (fullPath?.endsWith("/stats") ?? false) {
+    title = S.of(context).navigationDestinationStats;
     activeDestinationKey = NavigationDestinationKey.stats;
   } else if (fullPath?.endsWith("/settings") ?? false) {
+    title = S.of(context).navigationDestinationSettings;
     activeDestinationKey = NavigationDestinationKey.settings;
+  } else {
+    title = S.of(context).navigationDestinationToday;
+    activeDestinationKey = NavigationDestinationKey.today;
   }
 
   return MaterialPage(
       child: AppLayout(
           activeDestinationKey: activeDestinationKey,
-          appBar: const AppBar(
-            title: "Today",
+          appBar: AppBar(
+            title: title,
           ),
           child: child));
 };
 
 final GlobalKey<NavigatorState> _rootNavigatorKey =
     GlobalKey<NavigatorState>(debugLabel: "root");
-final GlobalKey<NavigatorState> _stageNavigatorKey =
-    GlobalKey<NavigatorState>(debugLabel: "stage");

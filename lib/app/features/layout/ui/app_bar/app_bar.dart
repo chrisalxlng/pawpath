@@ -1,4 +1,5 @@
 import "package:flutter/material.dart" hide IconButton;
+import "package:go_router/go_router.dart";
 import "package:pawpath/app/themes.dart";
 import "package:pawpath/app/ui/buttons/icon_button/icon_button.dart";
 
@@ -35,7 +36,10 @@ class AppBar extends StatelessWidget implements PreferredSizeWidget {
                 color: AppColors.textPrimary(context)),
           ),
           IconButton(
-            onPressed: () => debugPrint("TODO: Open bottom sheet"),
+            onPressed: () {
+              final currentPath = GoRouterState.of(context).fullPath;
+              context.go("$currentPath/dog-selection");
+            },
             iconData: Icons.swap_horizontal_circle,
             color: AppColors.primary_100,
             size: 30,
