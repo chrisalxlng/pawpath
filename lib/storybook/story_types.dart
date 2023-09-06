@@ -46,6 +46,12 @@ featureStoryWithKnobs(String feature, String name,
       wrapperBuilder: (_, child) => uiWrapper(child),
     );
 
+modalSheetStory(Widget widget) => Story(
+      name: "ModalSheets/${widget.toString()}",
+      builder: (context) => widget,
+      wrapperBuilder: (_, child) => modalSheetWrapper(child),
+    );
+
 screenStory(Widget widget) => Story(
       name: "Screens/${widget.toString()}",
       builder: (context) => widget,

@@ -1,4 +1,5 @@
 import "package:pawpath/app/counter/counter.story.dart";
+import "package:pawpath/app/features/dog_selection/ui/dog_overview/dog_overview.story.dart";
 import "package:pawpath/app/features/layout/app/ui/app_layout/app_layout.story.dart";
 import "package:pawpath/app/features/layout/app/ui/navigation_bar/navigation_bar.story.dart";
 import "package:pawpath/app/features/layout/modal_sheet/ui/modal_sheet_layout/modal_sheet_layout.story.dart";
@@ -20,5 +21,6 @@ final List<Story> stories = [
   counterStory,
   selectStory,
   selectGroupStory,
-  modalSheetLayoutStory
+  modalSheetLayoutStory,
+  dogOverviewStory
 ];

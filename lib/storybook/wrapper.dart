@@ -26,6 +26,17 @@ materialApp(Widget? body) => ValueListenableBuilder(
               )),
     );
 
+modalSheetWrapper(Widget? child) {
+  changeStoryType(StoryType.screen);
+  return materialApp(Container(
+    color: Colors.white,
+    child: deviceFrame(SafeArea(
+      bottom: false,
+      child: child!,
+    )),
+  ));
+}
+
 screenWrapper(Widget? child) {
   changeStoryType(StoryType.screen);
   return materialApp(Container(
