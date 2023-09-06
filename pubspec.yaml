@@ -20,6 +20,7 @@ dependencies:
   gap: ^3.0.1
   go_router: ^10.1.2
   collection: ^1.17.1
+  modal_bottom_sheet: ^3.0.0-pre
 
 dev_dependencies:
   flutter_test:

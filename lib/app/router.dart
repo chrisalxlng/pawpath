@@ -13,7 +13,7 @@ final dogSelectionRoute = GoRoute(
         parentNavigatorKey: _rootNavigatorKey,
         pageBuilder: (context, state) {
           fullPath = state.fullPath;
-          return const ModalBottomSheetPage(level: 2, child: DogCreation());
+          return const ModalBottomSheetPage(child: DogCreation());
         },
       )
     ]);
@@ -31,7 +31,7 @@ final router = GoRouter(
               fullPath = state.fullPath;
               return NoTransitionPage(
                   child: GestureDetector(
-                onTap: () => context.go("/today/test"),
+                onTap: () {},
                 child: const Counter(
                   title: "Today",
                 ),
