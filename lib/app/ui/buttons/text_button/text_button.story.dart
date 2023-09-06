@@ -7,7 +7,7 @@ import "package:storybook_flutter/storybook_flutter.dart";
 final Story textButtonStory = uiStoryWithKnobs(
   "TextButton",
   (context) => TextButton(
-    onPressed: () => debugPrint("IconButton pressed"),
+    onPressed: () => debugPrint("TextButton pressed"),
     label: context.knobs.text(label: "Label", initial: "Text"),
     color: AppColors.primary_100,
     size: context.knobs.slider(label: "Size", min: 0, initial: 24, max: 96),
