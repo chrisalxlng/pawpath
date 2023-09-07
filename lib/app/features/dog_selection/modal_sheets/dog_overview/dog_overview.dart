@@ -5,8 +5,9 @@ import "package:pawpath/app/features/layout/modal_sheet/ui/modal_sheet_layout/mo
 import "package:pawpath/app/features/layout/modal_sheet/ui/modal_sheet_layout/modal_sheet_layout.type.dart";
 import "package:pawpath/app/features/layout/shared/ui/header_bar/header_bar.dart";
 import "package:pawpath/app/features/layout/shared/ui/header_bar/header_bar.type.dart";
-import "package:pawpath/app/ui/select_group/select_group.dart";
-import "package:pawpath/app/ui/select_group/select_group.type.dart";
+import "package:pawpath/app/themes.dart";
+import "package:pawpath/app/ui/group/group.dart";
+import "package:pawpath/app/ui/select/select.dart";
 
 class DogOverview extends StatelessWidget {
   const DogOverview({super.key});
@@ -24,14 +25,13 @@ class DogOverview extends StatelessWidget {
               },
             )),
         action: ModalSheetAction(label: S.of(context).selectDog(1)),
-        child: const SelectGroup(
-          options: [
-            SelectGroupOption(key: ValueKey("Lulu"), label: "Lulu"),
-            SelectGroupOption(key: ValueKey("Balu"), label: "Balu"),
-            SelectGroupOption(key: ValueKey("Felix"), label: "Felix"),
-            SelectGroupOption(key: ValueKey("Tom"), label: "Tom"),
-          ],
-          selectedOptionKeys: [ValueKey("Lulu")],
+        child: Group(
+          options: ["Lulu", "Balu"]
+              .map((dog) => Select(
+                    label: dog,
+                    color: AppColors.backgroundSecondary(context),
+                  ))
+              .toList(),
         ));
   }
 }
