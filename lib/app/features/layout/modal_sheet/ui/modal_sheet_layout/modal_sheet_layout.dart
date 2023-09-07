@@ -38,6 +38,7 @@ class ModalSheetLayout extends StatelessWidget {
                     width: double.infinity,
                     child: ElevatedButton(
                         label: action.label,
+                        isDisabled: action.isDisabled,
                         onPressed: () => action.onPressed?.call(),
                         color: AppColors.primary_100)),
               )),
