@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:pawpath/app/stories.dart";
 import "package:pawpath/storybook/notifier.dart";
 import "package:pawpath/storybook/plugins/device_plugin.dart";
@@ -8,7 +9,7 @@ import "package:pawpath/storybook/plugins/ui_border_plugin.dart";
 import "package:storybook_flutter/storybook_flutter.dart";
 
 void main() {
-  runApp(const StorybookApp());
+  runApp(const ProviderScope(child: StorybookApp()));
 }
 
 class StorybookApp extends StatelessWidget {
