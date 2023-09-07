@@ -5,7 +5,8 @@
       "name": "pawpath",
       "request": "launch",
       "type": "dart",
-      "program": "lib/app/app.dart"
+      "program": "lib/app/app.dart",
+      "preLaunchTask": "build_runner-build"
     },
     {
       "name": "pawpath (profile mode)",
@@ -25,7 +26,8 @@
       "name": "storybook",
       "request": "launch",
       "type": "dart",
-      "program": "lib/storybook/storybook.dart"
+      "program": "lib/storybook/storybook.dart",
+      "preLaunchTask": "build_runner-build"
     }
   ]
 }

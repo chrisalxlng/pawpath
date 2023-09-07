@@ -11,7 +11,7 @@ class Counter extends StatefulWidget {
 }
 
 class _CounterState extends State<Counter> {
-  int _counter = 0;
+  final int _counter = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -32,11 +32,5 @@ class _CounterState extends State<Counter> {
         ),
       ),
     );
-  }
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
   }
 }
