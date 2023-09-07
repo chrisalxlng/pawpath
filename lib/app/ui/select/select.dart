@@ -40,7 +40,7 @@ class Select extends StatelessWidget {
           ),
           CupertinoCheckbox(
             value: isSelected,
-            onChanged: (_) {},
+            onChanged: (_) => onChanged?.call(!isSelected),
             activeColor: accentColor,
             side: BorderSide(width: 2, color: accentColor),
           )
