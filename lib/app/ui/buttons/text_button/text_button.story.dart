@@ -10,6 +10,7 @@ final Story textButtonStory = uiStoryWithKnobs(
     onPressed: () => debugPrint("TextButton pressed"),
     label: context.knobs.text(label: "Label", initial: "Text"),
     color: AppColors.primary_100,
+    isDisabled: context.knobs.boolean(label: "Is disabled", initial: false),
     size: context.knobs.slider(label: "Size", min: 0, initial: 24, max: 96),
   ),
 );

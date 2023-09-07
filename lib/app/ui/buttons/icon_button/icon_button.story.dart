@@ -10,6 +10,7 @@ final Story iconButtonStory = uiStoryWithKnobs(
     onPressed: () => debugPrint("IconButton pressed"),
     iconData: Icons.add_circle,
     color: AppColors.primary_100,
+    isDisabled: context.knobs.boolean(label: "Is disabled", initial: false),
     size: context.knobs.slider(label: "Size", min: 0, initial: 24, max: 96),
   ),
 );

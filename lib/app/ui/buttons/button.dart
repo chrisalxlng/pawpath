@@ -1,12 +1,14 @@
 import "dart:async";
 
 import "package:flutter/material.dart";
+import "package:pawpath/app/themes.dart";
 import "package:pawpath/app/ui/touchable/touchable.dart";
 import "package:pawpath/app/util.dart";
 
 class Button extends StatefulWidget {
-  final Widget Function(Color color) builder;
+  final Widget Function(Color color, Color textColor) builder;
   final VoidCallback onPressed;
+  final bool isDisabled;
   final Color color;
   final double size;
 
@@ -14,6 +16,7 @@ class Button extends StatefulWidget {
     super.key,
     required this.builder,
     required this.onPressed,
+    this.isDisabled = false,
     required this.color,
     this.size = 24,
   });
@@ -24,18 +27,23 @@ class Button extends StatefulWidget {
 
 class _ButtonState extends State<Button> {
   late Color _color;
+  late Color _textColor;
 
   Timer? _timer;
 
   @override
   Widget build(BuildContext context) {
     return Touchable(
+      isDisabled: widget.isDisabled,
       child: GestureDetector(
         behavior: HitTestBehavior.opaque,
-        onTapDown: (_) => _onTapDown(),
-        onTapUp: (_) => _onTapUp(),
-        onTapCancel: () => _onTapCancel(),
-        child: widget.builder(_color),
+        onTapDown: (_) => widget.isDisabled ? null : _onTapDown(),
+        onTapUp: (_) => widget.isDisabled ? null : _onTapUp(),
+        onTapCancel: () => widget.isDisabled ? null : _onTapCancel(),
+        child: widget.builder(
+          widget.isDisabled ? Colors.grey : _color,
+          widget.isDisabled ? Colors.blueGrey : _textColor,
+        ),
       ),
     );
   }
@@ -50,6 +58,7 @@ class _ButtonState extends State<Button> {
   void initState() {
     setState(() {
       _color = widget.color;
+      _textColor = AppColors.light_100;
     });
     super.initState();
   }

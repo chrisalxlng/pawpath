@@ -5,6 +5,7 @@ import "package:pawpath/app/ui/buttons/button.dart";
 class ElevatedButton extends StatelessWidget {
   final String label;
   final VoidCallback onPressed;
+  final bool isDisabled;
   final Color color;
   final double size;
 
@@ -12,6 +13,7 @@ class ElevatedButton extends StatelessWidget {
     super.key,
     required this.label,
     required this.onPressed,
+    this.isDisabled = false,
     required this.color,
     this.size = 16,
   });
@@ -19,7 +21,7 @@ class ElevatedButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Button(
-        builder: (color) => Container(
+        builder: (color, textColor) => Container(
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(AppBorderRadius.md),
                   color: color),
@@ -29,12 +31,13 @@ class ElevatedButton extends StatelessWidget {
                 widthFactor: 1,
                 child: Text(label,
                     style: TextStyle(
-                        color: AppColors.light_100,
+                        color: textColor,
                         fontWeight: FontWeight.w700,
                         fontSize: size)),
               ),
             ),
         onPressed: onPressed,
+        isDisabled: isDisabled,
         color: color);
   }
 }
