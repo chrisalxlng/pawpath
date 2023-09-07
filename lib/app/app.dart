@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:flutter_gen/gen_l10n/app_localizations.dart";
+import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:go_router/go_router.dart";
 import "package:pawpath/app/counter/counter.dart";
 import "package:pawpath/app/features/dog_selection/modal_sheets/dog_creation/dog_creation.dart";
@@ -14,7 +15,7 @@ import "package:pawpath/l10n/l10n.dart";
 part "router.dart";
 
 void main() {
-  runApp(const App());
+  runApp(const ProviderScope(child: App()));
 }
 
 class App extends StatelessWidget {
