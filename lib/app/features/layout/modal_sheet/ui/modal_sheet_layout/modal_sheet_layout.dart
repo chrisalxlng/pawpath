@@ -15,34 +15,37 @@ class ModalSheetLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     final action = this.action;
 
-    return Scaffold(
-        appBar: appBar,
-        backgroundColor: AppColors.backgroundPrimary(context),
-        body: Column(
-          children: [
-            Expanded(
-                child: SingleChildScrollView(
-              physics: const RangeMaintainingScrollPhysics(),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: AppSpacing.p4, vertical: AppSpacing.p8),
-                child: child,
-              ),
-            )),
-            if (action != null)
-              SafeArea(
-                  child: Padding(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: AppSpacing.p4, vertical: AppSpacing.p2),
-                child: SizedBox(
-                    width: double.infinity,
-                    child: ElevatedButton(
-                        label: action.label,
-                        isDisabled: action.isDisabled,
-                        onPressed: () => action.onPressed?.call(),
-                        color: AppColors.primary_100)),
+    return GestureDetector(
+      onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+      child: Scaffold(
+          appBar: appBar,
+          backgroundColor: AppColors.backgroundPrimary(context),
+          body: Column(
+            children: [
+              Expanded(
+                  child: SingleChildScrollView(
+                physics: const RangeMaintainingScrollPhysics(),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: AppSpacing.p4, vertical: AppSpacing.p8),
+                  child: child,
+                ),
               )),
-          ],
-        ));
+              if (action != null)
+                SafeArea(
+                    child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: AppSpacing.p4, vertical: AppSpacing.p2),
+                  child: SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton(
+                          label: action.label,
+                          isDisabled: action.isDisabled,
+                          onPressed: () => action.onPressed?.call(),
+                          color: AppColors.primary_100)),
+                )),
+            ],
+          )),
+    );
   }
 }
