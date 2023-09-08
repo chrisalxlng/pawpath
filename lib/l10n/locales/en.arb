@@ -1,22 +1,13 @@
 {
-  "@@locale": "en",
-  "navigationDestinationToday": "Today",
-  "navigationDestinationHistory": "History",
-  "navigationDestinationStats": "Stats",
-  "navigationDestinationSettings": "Settings",
-  "dogSelectionTitle": "My dogs",
-  "selectDog": "{count, plural, =0{No dogs selected} =1{Select dog} other{Select {count} dogs}}",
-  "@selectDog": {
-    "placeholders": {
-      "count": {
-        "type": "num",
-        "format": "compact"
-      }
-    }
-  },
-  "dogCreationTitle": "Add dog",
-  "add": "Add",
-  "validatorDogNameRequired": "Please provide a name",
-  "dogNameLabel": "Name",
-  "dogNamePlaceholder": "Lulu"
+    "@@locale": "en",
+    "navigationDestinationToday": "Today",
+    "navigationDestinationHistory": "History",
+    "navigationDestinationStats": "Stats",
+    "navigationDestinationSettings": "Settings",
+    "dogSelectionTitle": "My dogs",
+    "dogCreationTitle": "Add dog",
+    "add": "Add",
+    "validatorDogNameRequired": "Please provide a name",
+    "dogNameLabel": "Name",
+    "dogNamePlaceholder": "Lulu"
 }
