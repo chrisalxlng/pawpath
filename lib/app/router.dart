@@ -29,43 +29,28 @@ final router = GoRouter(
             path: "/today",
             pageBuilder: (context, state) {
               fullPath = state.fullPath;
-              return NoTransitionPage(
-                  child: GestureDetector(
-                onTap: () {},
-                child: const Counter(
-                  title: "Today",
-                ),
-              ));
+              return const NoTransitionPage(child: Text("Today"));
             },
             routes: [dogSelectionRoute]),
         GoRoute(
             path: "/history",
             pageBuilder: (context, state) {
               fullPath = state.fullPath;
-              return const NoTransitionPage(
-                  child: Counter(
-                title: "History",
-              ));
+              return const NoTransitionPage(child: Text("History"));
             },
             routes: [dogSelectionRoute]),
         GoRoute(
             path: "/stats",
             pageBuilder: (context, state) {
               fullPath = state.fullPath;
-              return const NoTransitionPage(
-                  child: Counter(
-                title: "Stats",
-              ));
+              return const NoTransitionPage(child: Text("Stats"));
             },
             routes: [dogSelectionRoute]),
         GoRoute(
             path: "/settings",
             pageBuilder: (context, state) {
               fullPath = state.fullPath;
-              return const NoTransitionPage(
-                  child: Counter(
-                title: "Settings",
-              ));
+              return const NoTransitionPage(child: Text("Settings"));
             },
             routes: [dogSelectionRoute]),
       ]),

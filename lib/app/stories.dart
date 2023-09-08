@@ -1,4 +1,3 @@
-import "package:pawpath/app/counter/counter.story.dart";
 import "package:pawpath/app/features/dog_selection/modal_sheets/dog_overview/dog_overview.story.dart";
 import "package:pawpath/app/features/dog_selection/ui/dog_creation_form/dog_creation.story.dart";
 import "package:pawpath/app/features/layout/app/ui/app_layout/app_layout.story.dart";
@@ -20,7 +19,6 @@ final List<Story> stories = [
   iconButtonStory,
   textButtonStory,
   elevatedButtonStory,
-  counterStory,
   selectStory,
   groupStory,
   modalSheetLayoutStory,
