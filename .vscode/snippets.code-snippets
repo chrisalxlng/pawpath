@@ -1,0 +1,8 @@
+{
+	"import_localizations": {
+		"scope": "dart",
+		"prefix": "loc",
+		"body": "import \"package:flutter_gen/gen_l10n/app_localizations.dart\";",
+		"description": "Imports the generated localizations file."
+	}
+}
