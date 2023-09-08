@@ -13,5 +13,10 @@
         "format": "compact"
       }
     }
-  }
+  },
+  "dogCreationTitle": "Add dog",
+  "add": "Add",
+  "validatorDogNameRequired": "Please provide a name",
+  "dogNameLabel": "Name",
+  "dogNamePlaceholder": "Lulu"
 }
