@@ -4,7 +4,6 @@ import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:go_router/go_router.dart";
 import "package:pawpath/app/features/dog_selection/state/dogs.state.dart";
 import "package:pawpath/app/features/layout/modal_sheet/ui/modal_sheet_layout/modal_sheet_layout.dart";
-import "package:pawpath/app/features/layout/modal_sheet/ui/modal_sheet_layout/modal_sheet_layout.type.dart";
 import "package:pawpath/app/features/layout/shared/ui/header_bar/header_bar.dart";
 import "package:pawpath/app/features/layout/shared/ui/header_bar/header_bar.type.dart";
 import "package:pawpath/app/themes.dart";
@@ -17,7 +16,6 @@ class DogOverview extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final dogs = ref.watch(dogListProvider);
-    final selectedDogs = ref.watch(selectedDogListProvider);
 
     return ModalSheetLayout(
         appBar: HeaderBar(
@@ -29,9 +27,6 @@ class DogOverview extends ConsumerWidget {
                 context.go("$currentRouterPath/add");
               },
             )),
-        action: ModalSheetAction(
-            label: S.of(context).selectDog(selectedDogs.length),
-            isDisabled: selectedDogs.isEmpty),
         child: Group(
           children: dogs
               .map((dog) => Select(
