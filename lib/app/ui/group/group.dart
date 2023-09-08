@@ -5,10 +5,14 @@ import "package:pawpath/app/themes.dart";
 
 class Group extends StatelessWidget {
   final List<Widget> children;
+  final CrossAxisAlignment alignment;
   final double spacing;
 
   const Group(
-      {super.key, this.children = const [], this.spacing = AppSpacing.p4});
+      {super.key,
+      this.children = const [],
+      this.spacing = AppSpacing.p4,
+      this.alignment = CrossAxisAlignment.start});
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +22,8 @@ class Group extends StatelessWidget {
             (index, option) => [if (index != 0) Gap(spacing), option])
         .toList();
 
-    return Column(children: children);
+    return Wrap(
+      children: [Column(crossAxisAlignment: alignment, children: children)],
+    );
   }
 }
