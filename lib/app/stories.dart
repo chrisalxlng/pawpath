@@ -9,6 +9,7 @@ import "package:pawpath/app/ui/buttons/icon_button/icon_button.story.dart";
 import "package:pawpath/app/ui/buttons/text_button/text_button.story.dart";
 import "package:pawpath/app/ui/group/group.story.dart";
 import "package:pawpath/app/ui/select/select.story.dart";
+import "package:pawpath/app/ui/text_field/text_field.story.dart";
 import "package:storybook_flutter/storybook_flutter.dart";
 
 final List<Story> stories = [
@@ -22,5 +23,6 @@ final List<Story> stories = [
   selectStory,
   groupStory,
   modalSheetLayoutStory,
-  dogOverviewStory
+  dogOverviewStory,
+  textFieldStory
 ];
