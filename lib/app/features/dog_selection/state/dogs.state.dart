@@ -16,7 +16,8 @@ class DogList extends Notifier<List<Dog>> {
   final _repository = mockDogRepository;
 
   void add(Dog dog) {
-    ref.read(_repository).addDog(dog);
+    final newDog = ref.read(_repository).addDog(dog);
+    state = [...state, newDog];
   }
 
   @override
