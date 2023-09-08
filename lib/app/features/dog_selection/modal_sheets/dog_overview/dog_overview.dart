@@ -33,7 +33,7 @@ class DogOverview extends ConsumerWidget {
             label: S.of(context).selectDog(selectedDogs.length),
             isDisabled: selectedDogs.isEmpty),
         child: Group(
-          options: dogs
+          children: dogs
               .map((dog) => Select(
                   label: dog.name,
                   isSelected: dog.isSelected,

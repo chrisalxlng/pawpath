@@ -4,19 +4,20 @@ import "package:gap/gap.dart";
 import "package:pawpath/app/themes.dart";
 
 class Group extends StatelessWidget {
-  final List<Widget> options;
+  final List<Widget> children;
   final double spacing;
 
   const Group(
-      {super.key, this.options = const [], this.spacing = AppSpacing.p4});
+      {super.key, this.children = const [], this.spacing = AppSpacing.p4});
 
   @override
   Widget build(BuildContext context) {
-    final List<Widget> items = options
+    final List<Widget> children = this
+        .children
         .expandIndexed(
             (index, option) => [if (index != 0) Gap(spacing), option])
         .toList();
 
-    return Column(children: items);
+    return Column(children: children);
   }
 }
