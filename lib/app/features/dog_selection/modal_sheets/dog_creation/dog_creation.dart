@@ -30,7 +30,7 @@ class DogCreation extends ConsumerWidget {
               child: DogCreationForm(
                   controller: ref.read(_dogCreationFormControllerProvider),
                   onSubmitted: (dog) {
-                    ref.read(dogListProvider.notifier).add(dog);
+                    ref.read(dogListProvider.notifier).addDog(dog);
                     context.pop();
                   }),
             )

@@ -1,40 +1,34 @@
 import "package:flutter_riverpod/flutter_riverpod.dart";
-import "package:pawpath/app/domain/dog/dog_repository.mock.dart";
+import "package:pawpath/app/domain/dog/dog_repository.local.dart";
 import "package:pawpath/app/models/dog/dog.dart";
 
-final dogListProvider = NotifierProvider<DogList, List<Dog>>(() {
+final dogListProvider = AsyncNotifierProvider<DogList, List<Dog>>(() {
   return DogList();
 });
 
-final selectedDogListProvider = StateProvider<List<Dog>>((ref) {
-  final selectedDogs =
-      ref.watch(dogListProvider).where((dog) => dog.isSelected).toList();
-  return selectedDogs;
-});
+class DogList extends AsyncNotifier<List<Dog>> {
+  final _repositoryType = localDogRepository;
 
-class DogList extends Notifier<List<Dog>> {
-  final _repository = mockDogRepository;
-
-  void add(Dog dog) {
-    final newDog = ref.read(_repository).addDog(dog);
-    state = [...state, newDog];
+  Future<void> addDog(Dog dog) async {
+    final repository = ref.read(_repositoryType);
+    state = const AsyncLoading();
+    state = await AsyncValue.guard(() => repository.addDog(dog));
   }
 
   @override
-  List<Dog> build() {
-    return ref.read(_repository).getDogs();
+  Future<List<Dog>> build() async {
+    return await ref.read(_repositoryType).getDogs();
   }
 
-  void remove(Dog dog) {
-    ref.read(_repository).removeDog(dog.id);
-    state = state.where((element) => dog != element).toList();
+  Future<void> removeDog(Dog dog) async {
+    final repository = ref.read(_repositoryType);
+    state = const AsyncLoading();
+    state = await AsyncValue.guard(() => repository.removeDog(dog.id));
   }
 
-  void update(Dog dog) {
-    final updatedDog = ref.read(_repository).updateDog(dog);
-    final updatedDogIndex = state.indexWhere((element) => element.id == dog.id);
-    final newState = [...state];
-    newState.replaceRange(updatedDogIndex, updatedDogIndex + 1, [updatedDog]);
-    state = newState;
+  Future<void> updateDog(Dog dog) async {
+    final repository = ref.read(_repositoryType);
+    state = const AsyncLoading();
+    state = await AsyncValue.guard(() => repository.updateDog(dog));
   }
 }

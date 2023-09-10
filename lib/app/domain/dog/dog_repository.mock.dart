@@ -9,27 +9,30 @@ final mockDogRepository =
 
 class MockDogRepository extends DogRepository {
   @override
-  Dog addDog(Dog dog) {
+  Future<List<Dog>> addDog(Dog dog) {
     debugPrint("Added ${dog.name}");
-    return dog;
+    return getDogs();
   }
 
   @override
-  List<Dog> getDogs() {
-    return [
-      Dog(name: "Lulu", id: const Uuid().v1()),
-      Dog(name: "Balu", id: const Uuid().v1())
-    ];
+  Future<List<Dog>> getDogs() {
+    return Future.delayed(
+        const Duration(milliseconds: 200),
+        () => [
+              Dog(name: "Lulu", id: const Uuid().v1()),
+              Dog(name: "Balu", id: const Uuid().v1())
+            ]);
   }
 
   @override
-  void removeDog(String id) {
+  Future<List<Dog>> removeDog(String id) {
     debugPrint("Removed $id");
+    return getDogs();
   }
 
   @override
-  Dog updateDog(Dog dog) {
+  Future<List<Dog>> updateDog(Dog dog) {
     debugPrint("Updated ${dog.name}");
-    return dog;
+    return getDogs();
   }
 }

@@ -1,4 +1,5 @@
 import "package:flutter/cupertino.dart";
+import "package:flutter/material.dart";
 import "package:flutter_gen/gen_l10n/app_localizations.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:go_router/go_router.dart";
@@ -15,9 +16,7 @@ class DogOverview extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final dogs = ref.watch(dogListProvider);
-
-    return ModalSheetLayout(
+    Widget getLayout(Widget child) => ModalSheetLayout(
         appBar: HeaderBar(
             title: S.of(context).dogSelectionTitle,
             action: HeaderBarAction(
@@ -27,16 +26,30 @@ class DogOverview extends ConsumerWidget {
                 context.go("$currentRouterPath/add");
               },
             )),
-        child: Group(
-          children: dogs
-              .map((dog) => Select(
-                  label: dog.name,
-                  isSelected: dog.isSelected,
-                  color: AppColors.backgroundSecondary(context),
-                  onChanged: (isSelected) => ref
-                      .read(dogListProvider.notifier)
-                      .update(dog.copyWith(isSelected: !dog.isSelected))))
-              .toList(),
-        ));
+        child: child);
+
+    final asyncDogList = ref.watch(dogListProvider);
+    return asyncDogList.when(
+      loading: () => getLayout(const Center(
+        child: CircularProgressIndicator(color: AppColors.primary_100),
+      )),
+      error: (error, stacktrace) {
+        debugPrint(error.toString());
+        debugPrint(stacktrace.toString());
+        // TODO: Error handling
+        return Text("Error: $error");
+      },
+      data: (dogs) => getLayout(Group(
+        children: dogs
+            .map((dog) => Select(
+                label: dog.name,
+                isSelected: dog.isSelected,
+                color: AppColors.backgroundSecondary(context),
+                onChanged: (isSelected) => ref
+                    .read(dogListProvider.notifier)
+                    .updateDog(dog.copyWith(isSelected: !dog.isSelected))))
+            .toList(),
+      )),
+    );
   }
 }
