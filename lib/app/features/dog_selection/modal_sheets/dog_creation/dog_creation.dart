@@ -18,17 +18,17 @@ class DogCreation extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final controller = ref.read(_dogCreationFormControllerProvider);
+
     return ModalSheetLayout(
         appBar: HeaderBar(title: S.of(context).dogCreationTitle),
         action: ModalSheetAction(
-            label: S.of(context).add,
-            onPressed: () =>
-                ref.read(_dogCreationFormControllerProvider).submit()),
+            label: S.of(context).add, onPressed: () => controller.submit()),
         child: Group(
           children: [
             Center(
               child: DogCreationForm(
-                  controller: ref.read(_dogCreationFormControllerProvider),
+                  controller: controller,
                   onSubmitted: (dog) {
                     ref.read(dogListProvider.notifier).addDog(dog);
                     context.pop();
