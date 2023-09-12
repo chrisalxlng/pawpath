@@ -18,6 +18,14 @@ final dogSelectionRoute = GoRoute(
       )
     ]);
 
+final dogWalkRoute = GoRoute(
+    path: "dog-walk",
+    parentNavigatorKey: _rootNavigatorKey,
+    pageBuilder: (context, state) {
+      fullPath = state.fullPath;
+      return const ModalBottomSheetPage(child: DogWalk());
+    });
+
 String? fullPath;
 
 final router = GoRouter(
@@ -31,28 +39,28 @@ final router = GoRouter(
               fullPath = state.fullPath;
               return const NoTransitionPage(child: Text("Today"));
             },
-            routes: [dogSelectionRoute]),
+            routes: [dogSelectionRoute, dogWalkRoute]),
         GoRoute(
             path: "/history",
             pageBuilder: (context, state) {
               fullPath = state.fullPath;
               return const NoTransitionPage(child: Text("History"));
             },
-            routes: [dogSelectionRoute]),
+            routes: [dogSelectionRoute, dogWalkRoute]),
         GoRoute(
             path: "/stats",
             pageBuilder: (context, state) {
               fullPath = state.fullPath;
               return const NoTransitionPage(child: Text("Stats"));
             },
-            routes: [dogSelectionRoute]),
+            routes: [dogSelectionRoute, dogWalkRoute]),
         GoRoute(
             path: "/settings",
             pageBuilder: (context, state) {
               fullPath = state.fullPath;
               return const NoTransitionPage(child: Text("Settings"));
             },
-            routes: [dogSelectionRoute]),
+            routes: [dogSelectionRoute, dogWalkRoute]),
       ]),
     ]);
 

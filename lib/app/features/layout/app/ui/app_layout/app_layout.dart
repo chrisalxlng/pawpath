@@ -1,5 +1,5 @@
 import "package:flutter/cupertino.dart";
-import "package:flutter/material.dart" hide NavigationBar;
+import "package:flutter/material.dart" hide NavigationBar, IconButton;
 import "package:flutter/services.dart";
 import "package:flutter_gen/gen_l10n/app_localizations.dart";
 import "package:go_router/go_router.dart";
@@ -58,6 +58,16 @@ class AppLayout extends StatelessWidget {
                 activeDestinationKey: activeDestinationKey,
                 destinations: destinations(context)),
             body: child,
+            floatingActionButton: FloatingActionButton(
+                onPressed: () {
+                  final fullPath = GoRouter.of(context)
+                      .routerDelegate
+                      .currentConfiguration
+                      .fullPath;
+                  context.go("$fullPath/dog-walk");
+                },
+                backgroundColor: AppColors.primary_100,
+                child: const Icon(Icons.directions_walk)),
           ))),
     );
   }
