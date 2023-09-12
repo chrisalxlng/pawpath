@@ -1,7 +1,7 @@
-import "package:pawpath/app/features/dog_selection/modal_sheets/dog_overview/dog_overview.story.dart";
-import "package:pawpath/app/features/dog_selection/ui/dog_creation_form/dog_creation.story.dart";
 import "package:pawpath/app/features/layout/app/ui/app_layout/app_layout.story.dart";
 import "package:pawpath/app/features/layout/app/ui/navigation_bar/navigation_bar.story.dart";
+import "package:pawpath/app/features/layout/modal_sheet/ui/modal_sheet_action_button/modal_sheet_action_button.story.dart";
+import "package:pawpath/app/features/layout/modal_sheet/ui/modal_sheet_base_layout/modal_sheet_base_layout.story.dart";
 import "package:pawpath/app/features/layout/modal_sheet/ui/modal_sheet_layout/modal_sheet_layout.story.dart";
 import "package:pawpath/app/features/layout/shared/ui/header_bar/header_bar.story.dart";
 import "package:pawpath/app/ui/buttons/elevated_button/elevated_button.story.dart";
@@ -22,7 +22,7 @@ final List<Story> stories = [
   selectStory,
   groupStory,
   modalSheetLayoutStory,
-  dogOverviewStory,
   textFieldStory,
-  dogCreationStory
+  modalSheetBaseLayoutStory,
+  modalSheetActionButtonStory
 ];
