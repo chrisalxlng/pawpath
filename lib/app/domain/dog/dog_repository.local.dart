@@ -1,3 +1,4 @@
+import "package:collection/collection.dart";
 import "package:flutter/cupertino.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:pawpath/app/data/local_storage/local_storage_api.dart";
@@ -24,6 +25,14 @@ class LocalDogRepository extends DogRepository {
         await localStorage.storeList(LocalStorageKey.dogs, serializedNewEntry);
     if (isSuccess) return getDogs();
     throw getException("$LocalDogRepository", "addDog");
+  }
+
+  @override
+  Future<Dog> getDog(String id) async {
+    final currentEntry = await getDogs();
+    final dog = currentEntry.firstWhereOrNull((element) => element.id == id);
+    if (dog != null) return dog;
+    throw getException("$LocalDogRepository", "getDog");
   }
 
   @override

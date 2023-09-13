@@ -21,10 +21,15 @@ class DogList extends AutoDisposeAsyncNotifier<List<Dog>> {
     return await ref.read(_repositoryType).getDogs();
   }
 
-  Future<void> removeDog(Dog dog) async {
+  Future<Dog> getDog(String id) async {
+    final repository = ref.read(_repositoryType);
+    return repository.getDog(id);
+  }
+
+  Future<void> removeDog(String id) async {
     final repository = ref.read(_repositoryType);
     state = const AsyncLoading();
-    state = await AsyncValue.guard(() => repository.removeDog(dog.id));
+    state = await AsyncValue.guard(() => repository.removeDog(id));
   }
 
   Future<void> updateDog(Dog dog) async {

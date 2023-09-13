@@ -1,5 +1,5 @@
 import "package:flutter/foundation.dart";
 
-class DogCreationFormController {
+class DogFormController {
   late VoidCallback submit;
 }

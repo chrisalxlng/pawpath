@@ -1,28 +1,29 @@
 import "package:flutter/material.dart" hide TextField, ElevatedButton;
 import "package:flutter_gen/gen_l10n/app_localizations.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
-import "package:pawpath/app/features/dog_selection/ui/dog_creation_form/dog_creation_form_controller.dart";
+import "package:pawpath/app/features/dog_management/ui/dog_form/dog_form_controller.dart";
 import "package:pawpath/app/models/dog/dog.dart";
 import "package:pawpath/app/ui/group/group.dart";
 import "package:pawpath/app/ui/text_field/text_field.dart";
 import "package:pawpath/app/ui/text_field/validators.dart";
 import "package:uuid/uuid.dart";
 
-final _dogNameProvider = StateProvider<String>((_) => "");
-
-class DogCreationForm extends ConsumerStatefulWidget {
-  final DogCreationFormController controller;
+class DogForm extends ConsumerStatefulWidget {
+  final Dog? dog;
+  final DogFormController controller;
   final void Function(Dog dog)? onSubmitted;
 
-  const DogCreationForm(
-      {super.key, required this.controller, this.onSubmitted});
+  const DogForm(
+      {super.key, this.dog, required this.controller, this.onSubmitted});
 
   @override
-  ConsumerState<DogCreationForm> createState() => _DogCreationFormState();
+  ConsumerState<DogForm> createState() => _DogFormState();
 }
 
-class _DogCreationFormState extends ConsumerState<DogCreationForm> {
+class _DogFormState extends ConsumerState<DogForm> {
   final _formKey = GlobalKey<FormState>();
+
+  String _dogName = "";
 
   @override
   Widget build(BuildContext context) {
@@ -31,9 +32,8 @@ class _DogCreationFormState extends ConsumerState<DogCreationForm> {
         Form(
           key: _formKey,
           child: TextField(
-            value: ref.read(_dogNameProvider),
-            onSubmit: (value) =>
-                ref.read(_dogNameProvider.notifier).state = value,
+            value: _dogName,
+            onChanged: (value) => setState(() => _dogName = value),
             label: S.of(context).dogNameLabel,
             placeholder: S.of(context).dogNamePlaceholder,
             validators: const [validateRequired],
@@ -46,14 +46,17 @@ class _DogCreationFormState extends ConsumerState<DogCreationForm> {
   @override
   void initState() {
     widget.controller.submit = submit;
+    _dogName = widget.dog?.name ?? "";
     super.initState();
   }
 
   void submit() {
-    if (_formKey.currentState!.validate()) {
-      widget.onSubmitted
-          ?.call(Dog(name: ref.read(_dogNameProvider), id: const Uuid().v1()));
-      ref.invalidate(_dogNameProvider);
+    if (!_formKey.currentState!.validate()) return;
+    final dog = widget.dog;
+    if (dog == null) {
+      widget.onSubmitted?.call(Dog(name: _dogName, id: const Uuid().v1()));
+    } else {
+      widget.onSubmitted?.call(dog.copyWith(name: _dogName));
     }
   }
 }

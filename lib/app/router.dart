@@ -1,7 +1,7 @@
 part of "app.dart";
 
-final dogSelectionRoute = GoRoute(
-    path: "dog-selection",
+final dogsRoute = GoRoute(
+    path: "dogs",
     parentNavigatorKey: _rootNavigatorKey,
     pageBuilder: (context, state) {
       fullPath = state.fullPath;
@@ -13,7 +13,22 @@ final dogSelectionRoute = GoRoute(
         parentNavigatorKey: _rootNavigatorKey,
         pageBuilder: (context, state) {
           fullPath = state.fullPath;
-          return const ModalBottomSheetPage(child: DogCreation());
+          return const ModalBottomSheetPage(child: AddDog());
+        },
+      ),
+      GoRoute(
+        path: "edit/:id",
+        parentNavigatorKey: _rootNavigatorKey,
+        pageBuilder: (context, state) {
+          fullPath = state.fullPath;
+          final id = state.pathParameters["id"];
+          if (id == null) {
+            debugPrint("Id missing.");
+            // TODO: Create error page
+            return const NoTransitionPage(child: Text("Id missing."));
+          } else {
+            return ModalBottomSheetPage(child: EditDog(id: id));
+          }
         },
       )
     ]);
@@ -39,28 +54,28 @@ final router = GoRouter(
               fullPath = state.fullPath;
               return const NoTransitionPage(child: Text("Today"));
             },
-            routes: [dogSelectionRoute, dogWalkRoute]),
+            routes: [dogsRoute, dogWalkRoute]),
         GoRoute(
             path: "/history",
             pageBuilder: (context, state) {
               fullPath = state.fullPath;
               return const NoTransitionPage(child: Text("History"));
             },
-            routes: [dogSelectionRoute, dogWalkRoute]),
+            routes: [dogsRoute, dogWalkRoute]),
         GoRoute(
             path: "/stats",
             pageBuilder: (context, state) {
               fullPath = state.fullPath;
               return const NoTransitionPage(child: Text("Stats"));
             },
-            routes: [dogSelectionRoute, dogWalkRoute]),
+            routes: [dogsRoute, dogWalkRoute]),
         GoRoute(
             path: "/settings",
             pageBuilder: (context, state) {
               fullPath = state.fullPath;
               return const NoTransitionPage(child: Text("Settings"));
             },
-            routes: [dogSelectionRoute, dogWalkRoute]),
+            routes: [dogsRoute, dogWalkRoute]),
       ]),
     ]);
 
@@ -92,7 +107,7 @@ ShellRoutePageBuilder _defaultLayout = (context, state, child) {
             title: title,
             action: HeaderBarAction(
                 iconData: Icons.swap_horizontal_circle,
-                onPressed: () => context.go("$fullPath/dog-selection")),
+                onPressed: () => context.go("$fullPath/dogs")),
           ),
           child: child));
 };

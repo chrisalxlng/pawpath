@@ -11,5 +11,7 @@
     "dogNameLabel": "Name",
     "dogNamePlaceholder": "Lulu",
     "dogSelectionTitle": "Select dogs",
-    "startWalk": "Start walk"
+    "startWalk": "Start walk",
+    "editDogTitle": "Edit dog",
+    "update": "Update"
 }

@@ -1,15 +1,15 @@
 import "package:flutter/cupertino.dart";
-import "package:flutter/material.dart";
+import "package:flutter/material.dart" hide Card;
 import "package:flutter_gen/gen_l10n/app_localizations.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:go_router/go_router.dart";
-import "package:pawpath/app/features/dog_selection/state/dogs.state.dart";
+import "package:pawpath/app/features/dog_management/state/dogs.state.dart";
 import "package:pawpath/app/features/layout/modal_sheet/ui/modal_sheet_layout/modal_sheet_layout.dart";
 import "package:pawpath/app/features/layout/shared/ui/header_bar/header_bar.dart";
 import "package:pawpath/app/features/layout/shared/ui/header_bar/header_bar.type.dart";
 import "package:pawpath/app/themes.dart";
+import "package:pawpath/app/ui/card/card.dart";
 import "package:pawpath/app/ui/group/group.dart";
-import "package:pawpath/app/ui/select/select.dart";
 
 class DogOverview extends ConsumerWidget {
   const DogOverview({super.key});
@@ -41,15 +41,30 @@ class DogOverview extends ConsumerWidget {
       },
       data: (dogs) => getLayout(Group(
         children: dogs
-            .map((dog) => Select(
-                label: dog.name,
-                isSelected: dog.isSelected,
-                color: AppColors.backgroundSecondary(context),
-                onChanged: (isSelected) => ref
-                    .read(dogListProvider.notifier)
-                    .updateDog(dog.copyWith(isSelected: !dog.isSelected))))
+            .map((dog) => Card(
+                  color: AppColors.backgroundSecondary(context),
+                  onPressed: () {
+                    final currentRouterPath =
+                        GoRouterState.of(context).fullPath;
+                    context.go("$currentRouterPath/edit/${dog.id}");
+                  },
+                  child: Row(
+                    children: [
+                      Text(
+                        dog.name,
+                        style: TextStyle(
+                            color: AppColors.textPrimary(context),
+                            fontWeight: FontWeight.w500),
+                      )
+                    ],
+                  ),
+                ))
             .toList(),
       )),
     );
   }
 }
+
+// ref
+//                     .read(dogListProvider.notifier)
+//                     .updateDog(dog.copyWith(isSelected: !dog.isSelected))

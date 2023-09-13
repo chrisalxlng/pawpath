@@ -7,7 +7,7 @@ typedef Validator = String? Function(String? value, BuildContext context);
 
 class TextField extends StatelessWidget {
   final String value;
-  final void Function(String value)? onSubmit;
+  final void Function(String value)? onChanged;
   final List<Validator> validators;
   final String label;
   final String? placeholder;
@@ -16,7 +16,7 @@ class TextField extends StatelessWidget {
       {super.key,
       required this.value,
       required this.label,
-      this.onSubmit,
+      this.onChanged,
       this.validators = const [],
       this.placeholder});
 
@@ -51,7 +51,7 @@ class TextField extends StatelessWidget {
         ),
         TextFormField(
           initialValue: value,
-          onChanged: onSubmit,
+          onChanged: onChanged,
           validator: (value) {
             final Validator? validator =
                 validators.firstWhereOrNull((v) => v(value, context) != null);
