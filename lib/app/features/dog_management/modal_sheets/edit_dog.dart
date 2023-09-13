@@ -32,8 +32,10 @@ class EditDog extends ConsumerWidget {
             title: S.of(context).editDogTitle,
             action: HeaderBarAction(
                 iconData: CupertinoIcons.trash_circle_fill,
-                onPressed: () =>
-                    ref.read(dogListProvider.notifier).removeDog(id))),
+                onPressed: () {
+                  ref.read(dogListProvider.notifier).removeDog(id);
+                  context.pop();
+                })),
         action: ModalSheetAction(
             label: S.of(context).update, onPressed: () => controller.submit()),
         child: Group(
