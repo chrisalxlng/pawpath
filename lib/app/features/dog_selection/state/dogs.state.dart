@@ -2,11 +2,12 @@ import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:pawpath/app/domain/dog/dog_repository.local.dart";
 import "package:pawpath/app/models/dog/dog.dart";
 
-final dogListProvider = AsyncNotifierProvider<DogList, List<Dog>>(() {
+final dogListProvider =
+    AsyncNotifierProvider.autoDispose<DogList, List<Dog>>(() {
   return DogList();
 });
 
-class DogList extends AsyncNotifier<List<Dog>> {
+class DogList extends AutoDisposeAsyncNotifier<List<Dog>> {
   final _repositoryType = localDogRepository;
 
   Future<void> addDog(Dog dog) async {

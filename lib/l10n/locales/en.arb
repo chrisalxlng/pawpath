@@ -4,10 +4,12 @@
     "navigationDestinationHistory": "History",
     "navigationDestinationStats": "Stats",
     "navigationDestinationSettings": "Settings",
-    "dogSelectionTitle": "My dogs",
+    "dogOverviewTitle": "My dogs",
     "dogCreationTitle": "Add dog",
     "add": "Add",
     "validatorDogNameRequired": "Please provide a name",
     "dogNameLabel": "Name",
-    "dogNamePlaceholder": "Lulu"
+    "dogNamePlaceholder": "Lulu",
+    "dogSelectionTitle": "Select dogs",
+    "startWalk": "Start walk"
 }

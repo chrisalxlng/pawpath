@@ -18,7 +18,7 @@ class DogOverview extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     Widget getLayout(Widget child) => ModalSheetLayout(
         appBar: HeaderBar(
-            title: S.of(context).dogSelectionTitle,
+            title: S.of(context).dogOverviewTitle,
             action: HeaderBarAction(
               iconData: CupertinoIcons.add_circled_solid,
               onPressed: () {

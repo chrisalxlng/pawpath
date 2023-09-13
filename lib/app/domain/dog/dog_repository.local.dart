@@ -64,4 +64,14 @@ class LocalDogRepository extends DogRepository {
     if (isSuccess) return getDogs();
     throw getException("$LocalDogRepository", "updateDog");
   }
+
+  @override
+  Future<List<Dog>> updateDogs(List<Dog> dogList) async {
+    final localStorage = ref.read(localStorageProvider);
+    final serializedNewEntry = jsonEncodeList(dogList);
+    final isSuccess =
+        await localStorage.storeList(LocalStorageKey.dogs, serializedNewEntry);
+    if (isSuccess) return getDogs();
+    throw getException("$LocalDogRepository", "updateDogs");
+  }
 }

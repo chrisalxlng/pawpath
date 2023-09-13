@@ -35,4 +35,10 @@ class MockDogRepository extends DogRepository {
     debugPrint("Updated ${dog.name}");
     return getDogs();
   }
+
+  @override
+  Future<List<Dog>> updateDogs(List<Dog> dogList) {
+    debugPrint("Updated all dogs");
+    return getDogs();
+  }
 }

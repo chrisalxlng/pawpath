@@ -47,14 +47,17 @@ class _ModalSheetPagedLayoutState extends ConsumerState<ModalSheetPagedLayout> {
         child: Column(
           children: [
             Expanded(
-                child: Padding(
-              padding: const EdgeInsets.symmetric(
-                  horizontal: AppSpacing.p4, vertical: AppSpacing.p8),
-              child: PageView(
-                controller: pageController,
-                physics: const NeverScrollableScrollPhysics(),
-                children: widget.pages.map((page) => page.body).toList(),
-              ),
+                child: PageView(
+              controller: pageController,
+              physics: const NeverScrollableScrollPhysics(),
+              children: widget.pages
+                  .map((page) => SingleChildScrollView(
+                          child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: AppSpacing.p4, vertical: AppSpacing.p8),
+                        child: page.body,
+                      )))
+                  .toList(),
             )),
             if (action != null) ModalSheetActionButton(action: action),
           ],
